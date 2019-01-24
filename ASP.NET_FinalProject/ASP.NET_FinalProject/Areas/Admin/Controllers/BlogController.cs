@@ -49,8 +49,16 @@ namespace ASP.NET_FinalProject.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude = "BlogPhoto")] Blog blog, HttpPostedFileBase BlogPhoto)
+        public ActionResult Create([Bind(Exclude = "BlogPhoto,SlidePhoto")] Blog blog, HttpPostedFileBase BlogPhoto, HttpPostedFileBase SlidePhoto)
         {
+            if (SlidePhoto != null)
+            {
+                string blogSlidePhotoFullPath = Path.Combine(Server.MapPath("~/Uploads"), SlidePhoto.FileName);
+
+                SlidePhoto.SaveAs(blogSlidePhotoFullPath);
+
+                blog.SlidePhoto = "/Uploads/" + SlidePhoto.FileName;
+            }
             blog.AddDate = DateTime.Now;
 
             string blogPhotoFullPath = Path.Combine(Server.MapPath("~/Uploads"), BlogPhoto.FileName);

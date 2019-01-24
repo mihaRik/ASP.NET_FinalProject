@@ -12,10 +12,12 @@ namespace ASP.NET_FinalProject.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name ="Model name")]
         public string ModelName { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name ="Make up")]
         public string MakeUp { get; set; }
 
         [Required]

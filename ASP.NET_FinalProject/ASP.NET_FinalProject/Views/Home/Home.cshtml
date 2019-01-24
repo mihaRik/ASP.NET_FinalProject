@@ -1,0 +1,68 @@
+﻿@model ASP.NET_FinalProject.Models.ViewModels.HomePageViewModel
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ***** Welcome Area Start ***** -->
+<section class="welcome-area">
+    <!-- Welcome Slides -->
+    <div class="welcome-slides owl-carousel">
+
+        @for (int i = 0; i < Model.Model.Count(); i++)
+        {
+            <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide">
+                <!-- Background Curve -->
+                <div class="bg-curve" style="background-image: url(/Assets/img/core-img/curve.png);"></div>
+                <!-- Main Background Image -->
+                <div class="main-bg-img bg-img" data-animation="fadeInUpBig" data-delay="200ms" style="background-image: url(@Model.Model.ToList()[i].ProfilePhoto);"></div>
+                <!-- Welcome Text -->
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="welcome-text">
+                                <h2 data-animation="bounceInUp" data-delay="400ms">
+                                    @Model.Model.ToList()[i].Name <br>
+                                    @Model.Model.ToList()[i].Surname
+                                </h2>
+                                <h5 data-animation="bounceInUp" data-delay="600ms">Star Model 2019</h5>
+                                <a href="#" class="btn" data-animation="bounceInUp" data-delay="800ms">Model details <i class="arrow_right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social Info -->
+                <div class="social-info">
+                    <a href="#" data-animation="bounceInDown" data-delay="1000ms"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+                    <a href="#" data-animation="bounceInDown" data-delay="1100ms"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+                    <a href="#" data-animation="bounceInDown" data-delay="1200ms"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+                    <a href="#" data-animation="bounceInDown" data-delay="1300ms"><i class="fa fa-youtube-play"></i> <span>Youtube</span></a>
+                </div>
+                <!-- Pager -->
+                <div class="slide-pager">
+                    @if (i + 1 == Model.Model.Count())
+                    {
+                        <a href="#">Next: @Model.Model.ToList()[0].Name</a>
+                    }
+                    else
+                    {
+                        <a href="#">Next: @Model.Model.ToList()[i + 1].Name</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- ***** Welcome Area End ***** -->
+
+@Html.Partial("_AboutUs")
+
+@Html.Partial("_ModelArea",Model)
+
+@Html.Partial("_ClientsFeedback",Model.Clients)
+
+@Html.Partial("_ContactUsArea")
+
+@Html.Partial("_BlogArea",Model.Blogs)

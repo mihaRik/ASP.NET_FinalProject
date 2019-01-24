@@ -156,9 +156,13 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactUsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModelCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PersonalController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +184,34 @@
     <Compile Include="Migrations\201901221524099_AddPhotoToBlogTable.Designer.cs">
       <DependentUpon>201901221524099_AddPhotoToBlogTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901231257250_TestUpdateInModelTable.cs" />
+    <Compile Include="Migrations\201901231257250_TestUpdateInModelTable.Designer.cs">
+      <DependentUpon>201901231257250_TestUpdateInModelTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901231322424_TestUpdateFailed.cs" />
+    <Compile Include="Migrations\201901231322424_TestUpdateFailed.Designer.cs">
+      <DependentUpon>201901231322424_TestUpdateFailed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901231342236_CreateStudentAndStudetnCategoryTables.cs" />
+    <Compile Include="Migrations\201901231342236_CreateStudentAndStudetnCategoryTables.Designer.cs">
+      <DependentUpon>201901231342236_CreateStudentAndStudetnCategoryTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901231353371_RestoreDatabase.cs" />
+    <Compile Include="Migrations\201901231353371_RestoreDatabase.Designer.cs">
+      <DependentUpon>201901231353371_RestoreDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901240548180_UpdateBlogTableForBlogArea.cs" />
+    <Compile Include="Migrations\201901240548180_UpdateBlogTableForBlogArea.Designer.cs">
+      <DependentUpon>201901240548180_UpdateBlogTableForBlogArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901240555105_RemoveNullableBoolFromBlogTable.cs" />
+    <Compile Include="Migrations\201901240555105_RemoveNullableBoolFromBlogTable.Designer.cs">
+      <DependentUpon>201901240555105_RemoveNullableBoolFromBlogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901241001069_DeleteHoverPhotoFromPersonalTable.cs" />
+    <Compile Include="Migrations\201901241001069_DeleteHoverPhotoFromPersonalTable.Designer.cs">
+      <DependentUpon>201901241001069_DeleteHoverPhotoFromPersonalTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogCategory.cs" />
@@ -193,6 +225,8 @@
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\ViewModels\AboutUsViewModel.cs" />
+    <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +257,7 @@
     <Content Include="Areas\Assets\img\sidebar-4.jpg" />
     <Content Include="Areas\Assets\img\sidebar-5.jpg" />
     <Content Include="Areas\Assets\img\tim_80x80.png" />
+    <Content Include="Areas\Assets\js\blog.js" />
     <Content Include="Areas\Assets\js\bootstrap-notify.js" />
     <Content Include="Areas\Assets\js\bootstrap-select.js" />
     <Content Include="Areas\Assets\js\bootstrap.min.js" />
@@ -415,6 +450,26 @@
     <Content Include="Areas\Admin\Views\Tag\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Tag\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Tag\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactUs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactUs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactUs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactUs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactUs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Personal\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Personal\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Personal\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Personal\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Personal\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -438,12 +493,21 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\_ViewStart.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Shared\_AboutUs.cshtml" />
+    <Content Include="Views\Shared\_ModelArea.cshtml" />
+    <Content Include="Views\Shared\_ClientsFeedback.cshtml" />
+    <Content Include="Views\Shared\_ContactUsArea.cshtml" />
+    <Content Include="Views\Shared\_BlogArea.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Shared\_Breadcumb.cshtml" />
+    <Content Include="Views\Shared\_CoreValue.cshtml" />
+    <Content Include="Views\Shared\_OurJudges.cshtml" />
+    <Content Include="Views\Shared\_ProjectsArea.cshtml" />
+    <Content Include="Views\Home\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -475,6 +539,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901221524099_AddPhotoToBlogTable.resx">
       <DependentUpon>201901221524099_AddPhotoToBlogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231257250_TestUpdateInModelTable.resx">
+      <DependentUpon>201901231257250_TestUpdateInModelTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231322424_TestUpdateFailed.resx">
+      <DependentUpon>201901231322424_TestUpdateFailed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231342236_CreateStudentAndStudetnCategoryTables.resx">
+      <DependentUpon>201901231342236_CreateStudentAndStudetnCategoryTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231353371_RestoreDatabase.resx">
+      <DependentUpon>201901231353371_RestoreDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901240548180_UpdateBlogTableForBlogArea.resx">
+      <DependentUpon>201901240548180_UpdateBlogTableForBlogArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901240555105_RemoveNullableBoolFromBlogTable.resx">
+      <DependentUpon>201901240555105_RemoveNullableBoolFromBlogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901241001069_DeleteHoverPhotoFromPersonalTable.resx">
+      <DependentUpon>201901241001069_DeleteHoverPhotoFromPersonalTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

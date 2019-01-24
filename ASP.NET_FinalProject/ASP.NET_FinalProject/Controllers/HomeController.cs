@@ -1,29 +1,42 @@
-﻿using System;
+﻿using ASP.NET_FinalProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ASP.NET_FinalProject.Models.ViewModels;
 
 namespace ASP.NET_FinalProject.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        ModelDbContext db = new ModelDbContext();
+
+        public ActionResult Home()
         {
-            return View();
+            HomePageViewModel model = new HomePageViewModel()
+            {
+                Model = db.Models.ToList(),
+                ModelCategory = db.ModelCategories.ToList(),
+                Clients = db.Clients.ToList(),
+                Blogs = db.Blogs.ToList().Reverse<Blog>()
+            };
+
+            return View(model);
         }
 
-        public ActionResult About()
+        public ActionResult AboutUs()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            AboutUsViewModel model = new AboutUsViewModel()
+            {
+                Clients = db.Clients.ToList(),
+                Personals = db.Personal.ToList()
+            };
+            return View(model);
         }
 
-        public ActionResult Contact()
+        public ActionResult Projects()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

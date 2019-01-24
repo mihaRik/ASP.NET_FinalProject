@@ -18,6 +18,9 @@ namespace ASP.NET_FinalProject.Models
         [Display(Name ="Photo")]
         public string BlogPhoto { get; set; }
 
+        [Display(Name = "Slide photo")]
+        public string SlidePhoto { get; set; }
+
         [Required]
         [Display(Name ="Tags")]
         public int TagId { get; set; }
@@ -32,5 +35,11 @@ namespace ASP.NET_FinalProject.Models
         [Required]
         [Display(Name ="Blog category")]
         public int BlogCategoryId { get; set; }
+
+        [Display(Name ="Slide photo available")]
+        public bool IsSlide { get; set; }
+
+        [Display(Name ="Is featured blog")]
+        public bool IsFeatured { get; set; }
     }
 }

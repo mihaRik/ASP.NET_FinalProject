@@ -17,6 +17,7 @@ namespace ASP.NET_FinalProject.Models
         [StringLength(50)]
         public string Title { get; set; }
 
+        [Display(Name ="Success story")]
         public string SuccessStory { get; set; }
 
         [Range(0,10)]

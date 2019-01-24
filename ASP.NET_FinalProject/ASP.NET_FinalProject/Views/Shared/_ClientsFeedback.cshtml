@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Client>
+
+<!-- ***** Client Feedback Area Start ***** -->
+<section class="clients-feedback-area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="slider slider-for">
+
+                    @foreach (var item in Model)
+                    {
+                        <!-- Client Feedback Text -->
+                        <div class="client-feedback-text text-center">
+                            <div class="quote-icon">
+                                <i class="icon_quotations" aria-hidden="true"></i>
+                            </div>
+                            <div class="client-description text-center">
+                                <h4>“@item.SuccessStory”</h4>
+                            </div>
+                            <div class="ratings text-center">
+
+                                @for (int i = 0; i < item.Rating / 2; i++)
+                                {
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                }
+                                @if (item.Rating % 2 == 1)
+                                {
+                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                }
+                            </div>
+                            <div class="client-name text-center">
+                                <h5>@item.Fullname</h5>
+                                <span>@item.Title</span>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Client Thumbnail Area -->
+            <div class="col-12 col-md-6 col-lg-5">
+                <div class="slider slider-nav">
+                    @foreach (var item in Model.Select(x => new { photo = x.Photo }))
+                    {
+                        <div class="client-thumbnail">
+                            <img src="@item.photo" alt="">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Client Feedback Area End ***** -->

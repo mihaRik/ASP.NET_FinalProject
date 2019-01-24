@@ -21,9 +21,7 @@ namespace ASP.NET_FinalProject.Models
         public string Title { get; set; }
 
         [Required]
+        [Display(Name ="Profile photo")]
         public string PhotoUrl { get; set; }
-
-        [Required]
-        public string HoverPhoto { get; set; }
     }
 }

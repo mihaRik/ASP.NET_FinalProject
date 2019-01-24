@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Personal>
+
+<!-- ***** Team Area Start ***** -->
+<section class="mona-team-area section-padding-80-0">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Our Team</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <!-- Single Team Member Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member-area mb-80">
+                        <div class="team-member-thumbnail">
+                            <!-- Thumbnail -->
+                            <img src="@item.PhotoUrl" alt="">
+
+                            <!-- Share Info -->
+                            <div class="share-info">
+                                <!-- Share Icon -->
+                                <div class="share-icon">
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                </div>
+                                <!-- Others Icon -->
+                                <div class="others-icon">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <h4>@item.Fullname</h4>
+                            <h6>@item.Title</h6>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- ***** Team Area End ***** -->

@@ -34,7 +34,7 @@ namespace ASP.NET_FinalProject.Models
         public int Age { get; set; }
 
         [Required]
-        [Display(Name ="Model category")]
+        [Display(Name = "Model category")]
         public int ModelCategoryId { get; set; }
     }
 }

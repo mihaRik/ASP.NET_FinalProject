@@ -1,0 +1,17 @@
+﻿@model AboutUsViewModel
+@{
+    ViewBag.Title = "AboutUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Breadcumb","About us")
+
+@Html.Partial("_AboutUs")
+
+@Html.Partial("_CoreValue")
+
+@Html.Partial("_OurJudges",Model.Personals)
+
+@Html.Partial("_ClientsFeedback",Model.Clients)
+
+@Html.Partial("_ContactUsArea")

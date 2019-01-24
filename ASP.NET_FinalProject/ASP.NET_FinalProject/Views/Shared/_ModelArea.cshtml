@@ -1,0 +1,199 @@
+﻿@model ASP.NET_FinalProject.Models.ViewModels.HomePageViewModel
+
+<!-- ***** Model Area Start ***** -->
+<section class="mona-model-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="model-tab-area">
+
+                    <ul class="nav nav-tabs mb-50" id="mona_modelTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="tab1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Model</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Actor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="tab4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">Singer</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mona Tab Content -->
+    <div class="mona-tab-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content" id="mona_modelTabContent">
+                        <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
+                            <!-- All Model Slide -->
+                            <div class="mona-all-model-slide owl-carousel">
+                                @foreach (var item in Model.Model)
+                                {
+                                    <!-- Single Model Item -->
+                                    <div class="single-model-item">
+                                        <div class="model-thumbnail">
+                                            <!-- First Thumbnail -->
+                                            <img class="first-thumbnail" src="@item.ProfilePhoto" alt="">
+                                            <!-- Second Thumbnail -->
+                                            <img class="second-thumbnail" src="@item.HoverPhoto" alt="">
+                                            <!-- Share Info -->
+                                            <div class="share-info">
+                                                <!-- Share Icon -->
+                                                <div class="share-icon">
+                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                </div>
+                                                <!-- Others Icon -->
+                                                <div class="others-icon">
+                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="model-info">
+                                            <h3>@item.Name @item.Surname</h3>
+                                            <h6>@Model.ModelCategory.ToList().Find(x => x.Id == item.ModelCategoryId).CategoryName</h6>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
+                            <!-- All Model Slide -->
+                            <div class="mona-models-slide owl-carousel">
+                                @{
+                                    var category = Model.ModelCategory.First(x => x.CategoryName == "Model");
+                                }
+
+                                @foreach (var item in Model.Model.Where(x => x.ModelCategoryId == category.Id))
+                                {
+                                    <!-- Single Model Item -->
+                                    <div class="single-model-item">
+                                        <div class="model-thumbnail">
+                                            <!-- First Thumbnail -->
+                                            <img class="first-thumbnail" src="@item.ProfilePhoto" alt="">
+                                            <!-- Second Thumbnail -->
+                                            <img class="second-thumbnail" src="@item.HoverPhoto" alt="">
+                                            <!-- Share Info -->
+                                            <div class="share-info">
+                                                <!-- Share Icon -->
+                                                <div class="share-icon">
+                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                </div>
+                                                <!-- Others Icon -->
+                                                <div class="others-icon">
+                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="model-info">
+                                            <h3>@item.Name @item.Surname</h3>
+                                            <h6>@category.CategoryName</h6>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab3">
+                            <!-- All Model Slide -->
+                            <div class="mona-actor-slide owl-carousel">
+                                @{
+                                    category = Model.ModelCategory.First(x => x.CategoryName == "Actor");
+                                }
+
+                                @foreach (var item in Model.Model.Where(x => x.ModelCategoryId == category.Id))
+                                {
+                                    <!-- Single Model Item -->
+                                    <div class="single-model-item">
+                                        <div class="model-thumbnail">
+                                            <!-- First Thumbnail -->
+                                            <img class="first-thumbnail" src="@item.ProfilePhoto" alt="">
+                                            <!-- Second Thumbnail -->
+                                            <img class="second-thumbnail" src="@item.HoverPhoto" alt="">
+                                            <!-- Share Info -->
+                                            <div class="share-info">
+                                                <!-- Share Icon -->
+                                                <div class="share-icon">
+                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                </div>
+                                                <!-- Others Icon -->
+                                                <div class="others-icon">
+                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="model-info">
+                                            <h3>@item.Name @item.Surname</h3>
+                                            <h6>@category.CategoryName</h6>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="tab4">
+                            <!-- All Model Slide -->
+                            <div class="mona-singer-slide owl-carousel">
+                                @{
+                                    category = Model.ModelCategory.First(x => x.CategoryName == "Singer");
+                                }
+                                @foreach (var item in Model.Model.Where(x => x.ModelCategoryId == category.Id))
+                                {
+                                    <!-- Single Model Item -->
+                                    <div class="single-model-item">
+                                        <div class="model-thumbnail">
+                                            <!-- First Thumbnail -->
+                                            <img class="first-thumbnail" src="@item.ProfilePhoto" alt="">
+                                            <!-- Second Thumbnail -->
+                                            <img class="second-thumbnail" src="@item.HoverPhoto" alt="">
+                                            <!-- Share Info -->
+                                            <div class="share-info">
+                                                <!-- Share Icon -->
+                                                <div class="share-icon">
+                                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                </div>
+                                                <!-- Others Icon -->
+                                                <div class="others-icon">
+                                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="model-info">
+                                            <h3>@item.Name @item.Surname</h3>
+                                            <h6>@category.CategoryName</h6>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Model Area End ***** -->
