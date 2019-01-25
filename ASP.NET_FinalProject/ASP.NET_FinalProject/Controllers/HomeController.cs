@@ -39,5 +39,75 @@ namespace ASP.NET_FinalProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Models()
+        {
+            ModelsPageViewModel model = new ModelsPageViewModel()
+            {
+                Models = db.Models.ToList(),
+                ModelCategories = db.ModelCategories.ToList()
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Casting()
+        {
+            AboutUsViewModel model = new AboutUsViewModel()
+            {
+                Clients = db.Clients.ToList(),
+                Personals = db.Personal.ToList()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Casting(ContactUs contactUs)
+        {
+            db.Contacts.Add(contactUs);
+            db.SaveChanges();
+
+            return RedirectToAction("Casting");
+        }
+
+        public ActionResult Blog()
+        {
+            return View(db.Blogs.ToList());
+        }
+
+        public ActionResult SingleBlog(int id)
+        {
+            var blog = db.Blogs.Find(id);
+            if (blog != null)
+            {
+                db.Blogs.Find(id).ViewCount++;
+                db.SaveChanges();
+            }
+
+            SingleBlogViewModel model = new SingleBlogViewModel()
+            {
+                SingleBlog = db.Blogs.Find(id),
+                Blogs = db.Blogs.ToList(),
+                Tags = db.Tags.ToList(),
+                BlogCategories = db.BlogCategories.ToList()
+            };
+
+            return View(model);
+        }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ContactUs(ContactUs contactUs)
+        {
+            db.Contacts.Add(contactUs);
+            db.SaveChanges();
+
+            return RedirectToAction("ContactUs");
+        }
     }
 }

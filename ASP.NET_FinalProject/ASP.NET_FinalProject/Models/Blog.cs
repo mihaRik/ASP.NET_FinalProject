@@ -15,17 +15,17 @@ namespace ASP.NET_FinalProject.Models
         public string Body { get; set; }
 
         [Required]
-        [Display(Name ="Photo")]
+        [Display(Name = "Photo")]
         public string BlogPhoto { get; set; }
 
         [Display(Name = "Slide photo")]
         public string SlidePhoto { get; set; }
 
         [Required]
-        [Display(Name ="Tags")]
+        [Display(Name = "Tags")]
         public int TagId { get; set; }
 
-        [Display(Name ="Add date")]
+        [Display(Name = "Add date")]
         public DateTime AddDate { get; set; }
 
         [Required]
@@ -33,13 +33,23 @@ namespace ASP.NET_FinalProject.Models
         public string Author { get; set; }
 
         [Required]
-        [Display(Name ="Blog category")]
+        [Display(Name = "Blog category")]
         public int BlogCategoryId { get; set; }
 
-        [Display(Name ="Slide photo available")]
+        [Display(Name = "Slide photo available")]
         public bool IsSlide { get; set; }
 
-        [Display(Name ="Is featured blog")]
+        [Display(Name = "Is featured blog")]
         public bool IsFeatured { get; set; }
+
+        private string blogLink;
+
+        public string BlogLink
+        {
+            get { return "/Home/SingleBlog/" + Id; }
+            set { blogLink = value; }
+        }
+
+        public int ViewCount { get; set; }
     }
 }

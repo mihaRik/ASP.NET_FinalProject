@@ -161,6 +161,8 @@
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModelCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ModelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavbarDropDownItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavbarItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
@@ -212,6 +214,18 @@
     <Compile Include="Migrations\201901241001069_DeleteHoverPhotoFromPersonalTable.Designer.cs">
       <DependentUpon>201901241001069_DeleteHoverPhotoFromPersonalTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901250859126_AddProjectNameInProjectTable.cs" />
+    <Compile Include="Migrations\201901250859126_AddProjectNameInProjectTable.Designer.cs">
+      <DependentUpon>201901250859126_AddProjectNameInProjectTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901251216492_AddBlogLinkAndViewCountToBlogTable.cs" />
+    <Compile Include="Migrations\201901251216492_AddBlogLinkAndViewCountToBlogTable.Designer.cs">
+      <DependentUpon>201901251216492_AddBlogLinkAndViewCountToBlogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901251345193_AddNavbarForeignKeyToNavbarItems.cs" />
+    <Compile Include="Migrations\201901251345193_AddNavbarForeignKeyToNavbarItems.Designer.cs">
+      <DependentUpon>201901251345193_AddNavbarForeignKeyToNavbarItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogCategory.cs" />
@@ -227,6 +241,9 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\ViewModels\AboutUsViewModel.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
+    <Compile Include="Models\ViewModels\LayoutViewModel.cs" />
+    <Compile Include="Models\ViewModels\ModelsPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\SingleBlogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +487,16 @@
     <Content Include="Areas\Admin\Views\Personal\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Personal\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Personal\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarItem\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarItem\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarDropDownItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarDropDownItem\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarDropDownItem\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarDropDownItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NavbarDropDownItem\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -508,6 +535,12 @@
     <Content Include="Views\Shared\_OurJudges.cshtml" />
     <Content Include="Views\Shared\_ProjectsArea.cshtml" />
     <Content Include="Views\Home\Projects.cshtml" />
+    <Content Include="Views\Home\Models.cshtml" />
+    <Content Include="Views\Home\Casting.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\SingleBlog.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -560,6 +593,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901241001069_DeleteHoverPhotoFromPersonalTable.resx">
       <DependentUpon>201901241001069_DeleteHoverPhotoFromPersonalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901250859126_AddProjectNameInProjectTable.resx">
+      <DependentUpon>201901250859126_AddProjectNameInProjectTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901251216492_AddBlogLinkAndViewCountToBlogTable.resx">
+      <DependentUpon>201901251216492_AddBlogLinkAndViewCountToBlogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901251345193_AddNavbarForeignKeyToNavbarItems.resx">
+      <DependentUpon>201901251345193_AddNavbarForeignKeyToNavbarItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

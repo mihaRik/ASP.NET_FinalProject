@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ASP.NET_FinalProject.Models.ViewModels
 {
-    public class AboutUsViewModel
+    public class AboutUsViewModel : LayoutViewModel
     {
         public IEnumerable<Client> Clients { get; set; }
 

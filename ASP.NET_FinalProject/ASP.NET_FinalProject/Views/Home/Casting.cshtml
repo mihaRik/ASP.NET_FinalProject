@@ -1,0 +1,56 @@
+﻿@model AboutUsViewModel
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Breadcumb", "Casting")
+
+
+<!-- ***** Casting Form Area Start ***** -->
+<section class="mona-casting-form-area section-padding-80-0">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+
+            <!-- Casting Form Thumbnail -->
+            <div class="col-12 col-lg-6 col-xl-6">
+                <div class="casting-form-thumbnail mb-80">
+                    <img src="~/Assets/img/bg-img/30.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- Casting Form -->
+            <div class="col-12 col-lg-6 col-xl-5">
+                <div class="casting-form mona-contact-form mb-80">
+                    <div class="contact-heading">
+                        <h2>Do you want to be a Supermodel?</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing esed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</p>
+                    </div>
+
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="fullName">Name:</label>
+                            <input type="text" class="form-control" name="Name" id="fullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailId">Email:</label>
+                            <input type="email" class="form-control" name="Email" id="emailId">
+                        </div>
+                        <div class="form-group">
+                            <label for="resume">Resume:</label>
+                            <textarea class="form-control" name="Resume" rows="8" cols="80" id="resume"></textarea>
+                        </div>
+                        <button type="submit" class="btn mona-btn btn-2 mt-15">Contact Us</button>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ***** Casting Form Area End ***** -->
+
+@Html.Partial("_OurJudges", Model.Personals)
+
+@Html.Partial("_ClientsFeedback", Model.Clients)

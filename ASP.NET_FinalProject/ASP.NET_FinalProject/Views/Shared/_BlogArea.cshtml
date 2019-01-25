@@ -20,11 +20,11 @@
             <div class="col-12 col-lg-4">
                 <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="100ms">
                     <div class="post-thumbnail slide-post owl-carousel">
-                        <a href="#"><img src="@slideBlog.BlogPhoto" alt=""></a>
-                        <a href="#"><img src="@slideBlog.SlidePhoto" alt=""></a>
+                        <a href="@slideBlog.BlogLink"><img src="@slideBlog.BlogPhoto" alt=""></a>
+                        <a href="@slideBlog.BlogLink"><img src="@slideBlog.SlidePhoto" alt=""></a>
                     </div>
                     <div class="post-content">
-                        <a href="#" class="post-title">@slideBlog.Title</a>
+                        <a href="@slideBlog.BlogLink" class="post-title">@slideBlog.Title</a>
                         <span class="post-date">@slideBlog.AddDate.ToLongDateString()</span>
                     </div>
                 </div>
@@ -36,15 +36,16 @@
                     @{
                         var featuredBlog = Model.First(x => x.IsFeatured);
                     }
+
                     <!-- Single Blog Post -->
                     <div class="col-12">
                         <div class="single-blog-post featured-post mb-30 wow fadeInUp" data-wow-delay="300ms">
                             <div class="post-thumbnail">
-                                <a href="#"><img src="@featuredBlog.BlogPhoto" alt=""></a>
+                                <a href="@featuredBlog.BlogLink"><img src="@featuredBlog.BlogPhoto" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <div>
-                                    <a href="#" class="post-title">@featuredBlog.Title</a>
+                                    <a href="@featuredBlog.BlogLink" class="post-title">@featuredBlog.Title</a>
                                     <span class="post-date">@featuredBlog.AddDate.ToLongDateString()</span>
                                 </div>
                             </div>
@@ -57,10 +58,10 @@
                         <div class="col-12 col-sm-6">
                             <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="500ms">
                                 <div class="post-thumbnail">
-                                    <a href="#"><img src="@item.BlogPhoto" alt=""></a>
+                                    <a href="@featuredBlog.BlogLink"><img src="@item.BlogPhoto" alt=""></a>
                                 </div>
                                 <div class="post-content">
-                                    <a href="#" class="post-title">@item.Title</a>
+                                    <a href="@featuredBlog.BlogLink" class="post-title">@item.Title</a>
                                     <span class="post-date">@item.AddDate.ToLongDateString()</span>
                                 </div>
                             </div>

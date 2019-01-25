@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ASP.NET_FinalProject.Models.ViewModels
 {
-    public class HomePageViewModel
+    public class HomePageViewModel : LayoutViewModel
     {
         public IEnumerable<Model> Model { get; set; }
 

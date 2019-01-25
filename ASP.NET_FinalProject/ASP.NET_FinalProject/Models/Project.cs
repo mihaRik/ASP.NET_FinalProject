@@ -17,6 +17,11 @@ namespace ASP.NET_FinalProject.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Project name")]
+        public string ProjectName { get; set; }
+
+        [Required]
+        [StringLength(100)]
         [Display(Name ="Make up")]
         public string MakeUp { get; set; }
 

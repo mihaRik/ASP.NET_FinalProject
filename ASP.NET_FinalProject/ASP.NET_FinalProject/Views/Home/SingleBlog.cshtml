@@ -1,0 +1,242 @@
+﻿@model SingleBlogViewModel
+
+@{
+    ViewBag.Title = "SingleBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var blog = Model.SingleBlog;
+}
+
+@Html.Partial("_Breadcumb", "SingleBlog")
+
+<!-- ***** Blog Details Area Start ***** -->
+<section class="blog-details-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="blog-details-content mt-5 mb-80">
+
+                    <!-- Post Details Text -->
+                    <div class="post-details-text">
+                        <img src="@blog.BlogPhoto" alt="">
+
+                        <div class="post-content mt-30 mb-30">
+                            <a href="#" class="post-date">@blog.AddDate.ToLongDateString()</a>
+                            <h2>@blog.Title</h2>
+                            <div class="post-meta">
+                                <a href="#" class="post-author">by @blog.Author</a>
+                                <a href="#" class="post-view"><i class="fa fa-eye" aria-hidden="true"></i> @blog.ViewCount</a>
+                                <a href="#" class="post-comments"><i class="fa fa-comments" aria-hidden="true"></i> 08</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            @blog.Body
+                        </p>
+
+                        <!-- Post Catagories & Post Share -->
+                        <div class="d-flex align-items-center justify-content-between">
+                            <!-- Post Catagories -->
+                            <div class="post-catagories">
+                                <ul class="d-flex flex-wrap align-items-center">
+                                    @foreach (var item in Model.Tags.Where(x => x.Id == blog.TagId))
+                                    {
+                                        <li><a href="#">@item.TagName</a></li>
+                                    }
+                                </ul>
+                            </div>
+
+                            <!-- Post Share -->
+                            <div class="mona-post-share d-flex align-items-center">
+                                <h6 class="mb-0 mr-3">Share:</h6>
+                                <div class="social-info-">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related News Area -->
+                        <div class="related-news-area">
+                            <h2 class="mb-4">Relatest News</h2>
+
+                            <div class="row">
+                                @foreach (var item in Model.Blogs.Where(x => !x.IsFeatured && !x.IsSlide).Take(2))
+                                {
+                                    <!-- Single Blog Post -->
+                                    <div class="col-12 col-md-6">
+                                        <div class="single-blog-post mb-30">
+                                            <div class="post-thumbnail">
+                                                <a href="@item.BlogLink"><img src="@item.BlogPhoto" alt=""></a>
+                                            </div>
+                                            <div class="post-content">
+                                                <a href="@item.BlogLink" class="post-title">@item.Title</a>
+                                                <span class="post-date">@item.AddDate.ToLongDateString()</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        @*<!-- Comments Area -->
+                            <div class="comment_area mb-50 clearfix">
+                                <h5 class="title">12 Comments</h5>
+
+                                <ol>
+                                    <!-- Single Comment Area -->
+                                    <li class="single_comment_area">
+                                        <!-- Comment Content -->
+                                        <div class="comment-content d-flex">
+                                            <!-- Comment Author -->
+                                            <div class="comment-author">
+                                                <img src="img/bg-img/49.jpg" alt="author">
+                                            </div>
+                                            <!-- Comment Meta -->
+                                            <div class="comment-meta">
+                                                <a href="#" class="post-date">27 Aug 2018</a>
+                                                <h5>Jerome Leonard</h5>
+                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu adipisci velit, sed quia non numquam eius modi</p>
+                                                <a href="#" class="like">Like</a>
+                                                <a href="#" class="reply">Reply</a>
+                                            </div>
+                                        </div>
+
+                                        <ol class="children">
+                                            <li class="single_comment_area">
+                                                <!-- Comment Content -->
+                                                <div class="comment-content d-flex">
+                                                    <!-- Comment Author -->
+                                                    <div class="comment-author">
+                                                        <img src="img/bg-img/50.jpg" alt="author">
+                                                    </div>
+                                                    <!-- Comment Meta -->
+                                                    <div class="comment-meta">
+                                                        <a href="#" class="post-date">27 Aug 2018</a>
+                                                        <h5>Theodore Adkins</h5>
+                                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu adipisci velit, sed quia non numquam eius modi</p>
+                                                        <a href="#" class="like">Like</a>
+                                                        <a href="#" class="reply">Reply</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    <!-- Single Comment Area -->
+                                    <li class="single_comment_area">
+                                        <!-- Comment Content -->
+                                        <div class="comment-content d-flex">
+                                            <!-- Comment Author -->
+                                            <div class="comment-author">
+                                                <img src="img/bg-img/51.jpg" alt="author">
+                                            </div>
+                                            <!-- Comment Meta -->
+                                            <div class="comment-meta">
+                                                <a href="#" class="post-date">27 Aug 2018</a>
+                                                <h5>Roger Marshall</h5>
+                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu adipisci velit, sed quia non numquam eius modi</p>
+                                                <a href="#" class="like">Like</a>
+                                                <a href="#" class="reply">Reply</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Leave A Reply -->
+                            <div class="mona-contact-form">
+                                <h2 class="mb-4">Leave A Comment</h2>
+
+                                <!-- Form -->
+                                <form action="#" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="text" name="message-name" class="form-control mb-15" placeholder="Name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="email" name="message-email" class="form-control mb-15" placeholder="Email">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="message" class="form-control mb-15" placeholder="Comment"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn mona-btn btn-2 mt-15">Post Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="sidebar-area mt-5">
+
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area search-widget-area mb-80">
+                        <form action="#" method="post">
+                            <input type="search" name="search" class="form-control" placeholder="Search ...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area catagories-widget mb-80">
+                        <h5 class="widget-title">Categories</h5>
+
+                        <!-- catagories list -->
+                        <ul class="catagories-list">
+                            @foreach (var item in Model.BlogCategories)
+                            {
+                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> @item.CategoryName</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area news-widget mb-80">
+                        <h5 class="widget-title">Latest Blogs</h5>
+
+                        @foreach (var item in Model.Blogs.Reverse().Take(4))
+                        {
+                            <!-- Single News Area -->
+                            <div class="single-news-area d-flex">
+                                <div class="blog-thumbnail">
+                                    <img src="@item.BlogPhoto" alt="">
+                                </div>
+                                <div class="blog-content">
+                                    <a href="@item.BlogLink" class="post-title">@item.Title</a>
+                                    <span class="post-date">@item.AddDate.ToLongDateString()</span>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area adds-widget mb-80">
+                        <a href="#"><img class="w-100" src="./img/bg-img/banner.png" alt=""></a>
+                    </div>
+
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area tags-widget mb-80">
+                        <h5 class="widget-title">Popular Tags</h5>
+
+                        <ul class="tags-list">
+                            @foreach (var item in Model.Tags)
+                            {
+                                <li><a href="#">@item.TagName</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Blog Details Area End ***** -->
