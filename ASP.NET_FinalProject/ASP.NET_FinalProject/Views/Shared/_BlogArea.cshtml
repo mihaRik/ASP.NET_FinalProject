@@ -14,58 +14,69 @@
 
         <div class="row">
             @{
-                var slideBlog = Model.First(x => x.IsSlide);
+                var slideBlog = Model.FirstOrDefault(x => x.IsSlide);
             }
-            <!-- Single Blog Post -->
-            <div class="col-12 col-lg-4">
-                <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="post-thumbnail slide-post owl-carousel">
-                        <a href="@slideBlog.BlogLink"><img src="@slideBlog.BlogPhoto" alt=""></a>
-                        <a href="@slideBlog.BlogLink"><img src="@slideBlog.SlidePhoto" alt=""></a>
-                    </div>
-                    <div class="post-content">
-                        <a href="@slideBlog.BlogLink" class="post-title">@slideBlog.Title</a>
-                        <span class="post-date">@slideBlog.AddDate.ToLongDateString()</span>
+
+            @if (slideBlog != null)
+            {
+                <!-- Single Blog Post -->
+                <div class="col-12 col-lg-4">
+                    <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="post-thumbnail slide-post owl-carousel">
+                            <a href="@slideBlog.BlogLink"><img src="@slideBlog.BlogPhoto" alt=""></a>
+                            <a href="@slideBlog.BlogLink"><img src="@slideBlog.SlidePhoto" alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <a href="@slideBlog.BlogLink" class="post-title">@slideBlog.Title</a>
+                            <span class="post-date">@slideBlog.AddDate.ToLongDateString()</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
 
             <div class="col-12 col-lg-8">
                 <div class="row">
 
                     @{
-                        var featuredBlog = Model.First(x => x.IsFeatured);
+                        var featuredBlog = Model.FirstOrDefault(x => x.IsFeatured);
                     }
 
-                    <!-- Single Blog Post -->
-                    <div class="col-12">
-                        <div class="single-blog-post featured-post mb-30 wow fadeInUp" data-wow-delay="300ms">
-                            <div class="post-thumbnail">
-                                <a href="@featuredBlog.BlogLink"><img src="@featuredBlog.BlogPhoto" alt=""></a>
-                            </div>
-                            <div class="post-content">
-                                <div>
-                                    <a href="@featuredBlog.BlogLink" class="post-title">@featuredBlog.Title</a>
-                                    <span class="post-date">@featuredBlog.AddDate.ToLongDateString()</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @foreach (var item in Model.Where(x => !x.IsFeatured && !x.IsSlide).Take(2))
+                    @if (featuredBlog != null)
                     {
                         <!-- Single Blog Post -->
-                        <div class="col-12 col-sm-6">
-                            <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="500ms">
+                        <div class="col-12">
+                            <div class="single-blog-post featured-post mb-30 wow fadeInUp" data-wow-delay="300ms">
                                 <div class="post-thumbnail">
-                                    <a href="@featuredBlog.BlogLink"><img src="@item.BlogPhoto" alt=""></a>
+                                    <a href="@featuredBlog.BlogLink"><img src="@featuredBlog.BlogPhoto" alt=""></a>
                                 </div>
                                 <div class="post-content">
-                                    <a href="@featuredBlog.BlogLink" class="post-title">@item.Title</a>
-                                    <span class="post-date">@item.AddDate.ToLongDateString()</span>
+                                    <div>
+                                        <a href="@featuredBlog.BlogLink" class="post-title">@featuredBlog.Title</a>
+                                        <span class="post-date">@featuredBlog.AddDate.ToLongDateString()</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    }
+
+                    @if (Model.Where(x => !x.IsFeatured && !x.IsSlide).Take(2) != null
+                        || Model.Where(x => !x.IsFeatured && !x.IsSlide).Take(2).Count() != 0)
+                    {
+                        foreach (var item in Model.Where(x => !x.IsFeatured && !x.IsSlide).Take(2))
+                        {
+                            <!-- Single Blog Post -->
+                            <div class="col-12 col-sm-6">
+                                <div class="single-blog-post mb-30 wow fadeInUp" data-wow-delay="500ms">
+                                    <div class="post-thumbnail">
+                                        <a href="@item.BlogLink"><img src="@item.BlogPhoto" alt=""></a>
+                                    </div>
+                                    <div class="post-content">
+                                        <a href="@item.BlogLink" class="post-title">@item.Title</a>
+                                        <span class="post-date">@item.AddDate.ToLongDateString()</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     }
 
                 </div>

@@ -1,25 +1,27 @@
-﻿@model IEnumerable<Blog>
+﻿@model HomePageViewModel
 
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.Partial("_Navbar", Model)
+
 @Html.Partial("_Breadcumb", "Blog")
 
 @{
     var blogArea = new List<Blog>();
-    blogArea.Add(Model.First(x => x.IsSlide));
-    blogArea.Add(Model.First(x => x.IsFeatured));
-    blogArea.AddRange(Model.Where(x => !x.IsFeatured && !x.IsSlide).Take(2));
+    blogArea.Add(Model.Blogs.FirstOrDefault(x => x.IsSlide));
+    blogArea.Add(Model.Blogs.FirstOrDefault(x => x.IsFeatured));
+    blogArea.AddRange(Model.Blogs.Where(x => !x.IsFeatured && !x.IsSlide).Take(2));
 }
 
-@Html.Partial("_BlogArea", Model)
+@Html.Partial("_BlogArea", Model.Blogs)
 
 <div class="container">
     <div class="row">
 
-        @foreach (var item in Model.Where(x => !x.IsFeatured && !x.IsSlide).Skip(2))
+        @foreach (var item in Model.Blogs.Where(x => !x.IsFeatured && !x.IsSlide).Skip(2))
         {
             <!-- Single Blog Post -->
             <div class="col-12 col-sm-6 col-lg-4">

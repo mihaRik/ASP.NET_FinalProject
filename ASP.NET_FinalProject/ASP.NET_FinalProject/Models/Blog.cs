@@ -42,12 +42,9 @@ namespace ASP.NET_FinalProject.Models
         [Display(Name = "Is featured blog")]
         public bool IsFeatured { get; set; }
 
-        private string blogLink;
-
         public string BlogLink
         {
             get { return "/Home/SingleBlog/" + Id; }
-            set { blogLink = value; }
         }
 
         public int ViewCount { get; set; }

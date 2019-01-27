@@ -37,7 +37,8 @@ namespace ASP.NET_FinalProject.Controllers
 
         public ActionResult Projects()
         {
-            return View();
+            LayoutViewModel model = new LayoutViewModel();
+            return View(model);
         }
 
         public ActionResult Models()
@@ -71,9 +72,20 @@ namespace ASP.NET_FinalProject.Controllers
             return RedirectToAction("Casting");
         }
 
-        public ActionResult Blog()
+        public ActionResult Blog(int? id)
         {
-            return View(db.Blogs.ToList());
+            HomePageViewModel model = new HomePageViewModel();
+
+            if (id == null)
+            {
+                model.Blogs = db.Blogs.ToList();
+            }
+            else
+            {
+                model.Blogs = db.Blogs.Where(x => x.BlogCategoryId == id).ToList();
+            }
+
+            return View(model);
         }
 
         public ActionResult SingleBlog(int id)
@@ -98,7 +110,7 @@ namespace ASP.NET_FinalProject.Controllers
 
         public ActionResult ContactUs()
         {
-            return View();
+            return View(new LayoutViewModel());
         }
 
         [HttpPost]
@@ -108,6 +120,40 @@ namespace ASP.NET_FinalProject.Controllers
             db.SaveChanges();
 
             return RedirectToAction("ContactUs");
+        }
+
+        [HttpPost]
+        public ActionResult Search(string q)
+        {
+            return RedirectToAction("SearchResult", new { q });
+        }
+
+        public ActionResult SearchResult(string q)
+        {
+            SearchResultViewModel model = new SearchResultViewModel()
+            {
+                ModelCategories = db.ModelCategories.ToList(),
+
+                Blogs = db.Blogs
+                .Where(x => x.Title.ToUpper().Contains(q.ToUpper()) ||
+                            x.Body.ToUpper().Contains(q.ToUpper()) ||
+                            x.Author.ToUpper().Contains(q.ToUpper()))
+                .ToList(),
+
+                Models = db.Models
+                .Where(x => x.Name.ToUpper().Contains(q.ToUpper()) ||
+                            x.Surname.ToUpper().Contains(q.ToUpper()))
+                .ToList(),
+
+                Personals = db.Personal
+                .Where(x => x.Fullname.ToUpper().Contains(q.ToUpper()) ||
+                            x.Title.ToUpper().Contains(q.ToUpper()))
+                .ToList(),
+
+                Query = q
+            };
+
+            return View(model);
         }
     }
 }

@@ -5,10 +5,12 @@ using System.Web;
 
 namespace ASP.NET_FinalProject.Models.ViewModels
 {
-    public abstract class LayoutViewModel
+    public class LayoutViewModel
     {
         private static ModelDbContext db = new ModelDbContext();
 
-        public IEnumerable<NavbarItem> navbarItems = db.NavbarItems.ToList();
+        public IEnumerable<NavbarItem> NavbarItems { get; } = db.NavbarItems.ToList();
+
+        public IEnumerable<NavbarDropDownItem> NavbarDropDownItems { get; } = db.NavbarDropDownItems.ToList();
     }
 }

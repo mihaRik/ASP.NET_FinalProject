@@ -12,9 +12,14 @@ namespace ASP.NET_FinalProject.Models
 
         [Required]
         [StringLength(100)]
-        [Display(Name ="Category name")]
+        [Display(Name = "Category name")]
         public string CategoryName { get; set; }
 
         public IEnumerable<Blog> Blogs { get; set; }
+
+        public string BlogCategoryLink
+        {
+            get { return "/Home/Blog/" + Id; }
+        }
     }
 }

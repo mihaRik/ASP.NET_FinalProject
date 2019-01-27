@@ -5,10 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ 
-    var a = Model.navbarItems.ToList()[0].NavbarDropDownItems;
-}
-@Html.Partial("_Navbar",Model.navbarItems)
+@Html.Partial("_Navbar",Model)
 
 <!-- ***** Welcome Area Start ***** -->
 <section class="welcome-area">

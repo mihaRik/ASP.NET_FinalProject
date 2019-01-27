@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NavbarItem>
+﻿@model LayoutViewModel
 
 <!-- ***** Header Area Start ***** -->
 <header class="header-area">
@@ -12,7 +12,7 @@
                 <div class="bg-curve" style="background-image: url(/Assets/img/core-img/curve.png);"></div>
 
                 <!-- Logo -->
-                <a class="nav-brand" href="#"><img src="~/Assets/img/core-img/logo.png" alt=""></a>
+                <a class="nav-brand" href="/Home/Home"><img src="~/Assets/img/core-img/logo.png" alt=""></a>
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
@@ -29,21 +29,39 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul id="nav">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.NavbarItems)
                             {
-                                <li class="current-item">
-                                    <a href="@item.Url">@item.NavItemName</a>
-                                    @if (item.IsDropDown)
-                                    {
-                                    <ul class="dropdown">
-                                        @foreach (var dropdown in item.NavbarDropDownItems)
+                                if (Request.Url.AbsolutePath == item.Url)
+                                {
+                                    <li class="current-item">
+                                        <a href="@item.Url">@item.NavItemName</a>
+                                        @if (item.IsDropDown)
                                         {
-                                            <li><a href="@dropdown.Url">- @dropdown.NavItemName</a></li>
-
+                                            <ul class="dropdown">
+                                                @foreach (var dropdown in Model.NavbarDropDownItems.Where(x => x.NavbarItemId == item.Id))
+                                                {
+                                                    <li><a href="@dropdown.Url">- @dropdown.NavItemName</a></li>
+                                                }
+                                            </ul>
                                         }
-                                    </ul>
-                                    }
-                                </li>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@item.Url">@item.NavItemName</a>
+                                        @if (item.IsDropDown)
+                                        {
+                                            <ul class="dropdown">
+                                                @foreach (var dropdown in Model.NavbarDropDownItems.Where(x => x.NavbarItemId == item.Id))
+                                                {
+                                                    <li><a href="@dropdown.Url">- @dropdown.NavItemName</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+
+                                }
                             }
                         </ul>
 
@@ -70,10 +88,11 @@
                     <!-- Close Button -->
                     <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
                     <!-- Form -->
-                    <form action="#" method="post">
-                        <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                    {
+                        <input type="search" name="q" class="form-control" placeholder="Search and hit enter...">
                         <button type="submit">Search</button>
-                    </form>
+                    }
                 </div>
             </div>
         </div>

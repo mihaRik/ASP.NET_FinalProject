@@ -6,6 +6,8 @@
     var blog = Model.SingleBlog;
 }
 
+@Html.Partial("_Navbar", Model)
+
 @Html.Partial("_Breadcumb", "SingleBlog")
 
 <!-- ***** Blog Details Area Start ***** -->
@@ -192,7 +194,7 @@
                         <ul class="catagories-list">
                             @foreach (var item in Model.BlogCategories)
                             {
-                                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> @item.CategoryName</a></li>
+                                <li><a href="@item.BlogCategoryLink"><i class="fa fa-angle-double-right" aria-hidden="true"></i> @item.CategoryName</a></li>
                             }
                         </ul>
                     </div>

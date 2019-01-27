@@ -226,6 +226,26 @@
     <Compile Include="Migrations\201901251345193_AddNavbarForeignKeyToNavbarItems.Designer.cs">
       <DependentUpon>201901251345193_AddNavbarForeignKeyToNavbarItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901261131373_TestAddStudentTableForeignKey.cs" />
+    <Compile Include="Migrations\201901261131373_TestAddStudentTableForeignKey.Designer.cs">
+      <DependentUpon>201901261131373_TestAddStudentTableForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901261154359_DeleteTestMigration.cs" />
+    <Compile Include="Migrations\201901261154359_DeleteTestMigration.Designer.cs">
+      <DependentUpon>201901261154359_DeleteTestMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271309544_AddBlogCategoryLink.cs" />
+    <Compile Include="Migrations\201901271309544_AddBlogCategoryLink.Designer.cs">
+      <DependentUpon>201901271309544_AddBlogCategoryLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271312020_UpdateBlogAndBlogCategoryTables.cs" />
+    <Compile Include="Migrations\201901271312020_UpdateBlogAndBlogCategoryTables.Designer.cs">
+      <DependentUpon>201901271312020_UpdateBlogAndBlogCategoryTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271312567_UpdateBlogAndBlogCategoryTables2.cs" />
+    <Compile Include="Migrations\201901271312567_UpdateBlogAndBlogCategoryTables2.Designer.cs">
+      <DependentUpon>201901271312567_UpdateBlogAndBlogCategoryTables2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogCategory.cs" />
@@ -243,6 +263,7 @@
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutViewModel.cs" />
     <Compile Include="Models\ViewModels\ModelsPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\SearchResultViewModel.cs" />
     <Compile Include="Models\ViewModels\SingleBlogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -541,6 +562,7 @@
     <Content Include="Views\Home\SingleBlog.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -602,6 +624,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901251345193_AddNavbarForeignKeyToNavbarItems.resx">
       <DependentUpon>201901251345193_AddNavbarForeignKeyToNavbarItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901261131373_TestAddStudentTableForeignKey.resx">
+      <DependentUpon>201901261131373_TestAddStudentTableForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901261154359_DeleteTestMigration.resx">
+      <DependentUpon>201901261154359_DeleteTestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271309544_AddBlogCategoryLink.resx">
+      <DependentUpon>201901271309544_AddBlogCategoryLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271312020_UpdateBlogAndBlogCategoryTables.resx">
+      <DependentUpon>201901271312020_UpdateBlogAndBlogCategoryTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271312567_UpdateBlogAndBlogCategoryTables2.resx">
+      <DependentUpon>201901271312567_UpdateBlogAndBlogCategoryTables2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
