@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Partial("_Navbar",Model)
+@Html.Partial("_Navbar", Model)
 
 <!-- ***** Welcome Area Start ***** -->
 <section class="welcome-area">
@@ -37,10 +37,19 @@
                 </div>
                 <!-- Social Info -->
                 <div class="social-info">
-                    <a href="#" data-animation="bounceInDown" data-delay="1000ms"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
-                    <a href="#" data-animation="bounceInDown" data-delay="1100ms"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
-                    <a href="#" data-animation="bounceInDown" data-delay="1200ms"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
-                    <a href="#" data-animation="bounceInDown" data-delay="1300ms"><i class="fa fa-youtube-play"></i> <span>Youtube</span></a>
+                    @try
+                    {
+                        foreach (var item in Model.SocialNetworks.Where(x => x.ReferenceId == @Model.Model.ToList()[i].Id))
+                        {
+                            SocialNetworkCategory category = Model.SocialNetworkCategories
+                                .FirstOrDefault(x => x.Id == item.SocialNetworkCategoryId);
+
+                            <a href="@item.Link" data-animation="bounceInDown" data-delay="1000ms"><i class="@category.CategoryIcon"></i> <span>@category.CategoryName</span></a>
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
                 </div>
                 <!-- Pager -->
                 <div class="slide-pager">
@@ -61,10 +70,10 @@
 
 @Html.Partial("_AboutUs")
 
-@Html.Partial("_ModelArea",Model)
+@Html.Partial("_ModelArea", Model)
 
-@Html.Partial("_ClientsFeedback",Model.Clients)
+@Html.Partial("_ClientsFeedback", Model.Clients)
 
 @Html.Partial("_ContactUsArea")
 
-@Html.Partial("_BlogArea",Model.Blogs)
+@Html.Partial("_BlogArea", Model.Blogs)

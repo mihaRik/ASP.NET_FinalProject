@@ -19,7 +19,9 @@ namespace ASP.NET_FinalProject.Controllers
                 Model = db.Models.ToList(),
                 ModelCategory = db.ModelCategories.ToList(),
                 Clients = db.Clients.ToList(),
-                Blogs = db.Blogs.ToList().Reverse<Blog>()
+                Blogs = db.Blogs.ToList().Reverse<Blog>(),
+                SocialNetworks = db.SocialNetworks.ToList(),
+                SocialNetworkCategories = db.SocialNetworkCategories.ToList()
             };
 
             return View(model);

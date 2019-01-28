@@ -22,5 +22,7 @@ namespace ASP.NET_FinalProject.Models
         public DbSet<Personal> Personal { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<SocialNetworkCategory> SocialNetworkCategories { get; set; }
+        public DbSet<SocialNetwork> SocialNetworks { get; set; }
     }
 }

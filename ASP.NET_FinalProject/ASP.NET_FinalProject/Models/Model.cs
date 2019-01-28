@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ASP.NET_FinalProject.Models
 {
-    public class Model
+    public class Model : PersonWithSocialNetwork
     {
         public int Id { get; set; }
 
@@ -36,5 +36,7 @@ namespace ASP.NET_FinalProject.Models
         [Required]
         [Display(Name = "Model category")]
         public int ModelCategoryId { get; set; }
+
+        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
     }
 }

@@ -36,35 +36,47 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @item.Body.Substring(0,50)...
-        </td>
-        <td>
-            <img src="@item.BlogPhoto" style="width:150px; height:100px;" alt="Alternate Text" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TagId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogCategoryId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.Body.Substring(0, 50)...
+            </td>
+            <td>
+                @if (item.IsFeatured)
+                {
+                    <img src="@item.BlogPhoto" style="width:250px; height:100px;" alt="Alternate Text" />
+                }
+                else if(item.IsSlide)
+                {
+                    <img src="@item.BlogPhoto" style="width:150px; height:250px;" alt="Alternate Text" />
+                }
+                else
+                {
+                    <img src="@item.BlogPhoto" style="width:150px; height:100px;" alt="Alternate Text" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogCategoryId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

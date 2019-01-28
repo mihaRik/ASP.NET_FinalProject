@@ -1,0 +1,75 @@
+﻿@using System.Reflection
+@model ASP.NET_FinalProject.Models.SocialNetwork
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>SocialNetwork</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SocialNetworkCategoryId, "SocialNetworkCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SocialNetworkCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SocialNetworkCategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReferenceId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="ReferenceId" class="form-control">
+                    @{
+                        var prop = ViewBag.people.GetType().GetProperties();
+                    }
+                    @foreach (var people in prop)
+                    {
+                        foreach (var item in people.GetValue(ViewBag.people))
+                        {
+                            try
+                            {
+                                if (!String.IsNullOrEmpty(item.Name))
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                <option value="@item.Id">@item.Fullname</option>
+                            }
+                        }
+                    }
+                </select>
+                @*@Html.EditorFor(model => model.ReferenceId, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.ReferenceId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

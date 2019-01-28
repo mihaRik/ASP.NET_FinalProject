@@ -12,5 +12,9 @@ namespace ASP.NET_FinalProject.Models.ViewModels
         public IEnumerable<NavbarItem> NavbarItems { get; } = db.NavbarItems.ToList();
 
         public IEnumerable<NavbarDropDownItem> NavbarDropDownItems { get; } = db.NavbarDropDownItems.ToList();
+
+        public IEnumerable<SocialNetwork> SocialNetworks { get; } = db.SocialNetworks.ToList();
+
+        public IEnumerable<SocialNetworkCategory> SocialNetworkCategories { get; } = db.SocialNetworkCategories.ToList();
     }
 }

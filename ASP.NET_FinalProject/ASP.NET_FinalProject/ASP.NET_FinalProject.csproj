@@ -165,6 +165,8 @@
     <Compile Include="Areas\Admin\Controllers\NavbarItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SocialNetworkCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SocialNetworkController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +248,22 @@
     <Compile Include="Migrations\201901271312567_UpdateBlogAndBlogCategoryTables2.Designer.cs">
       <DependentUpon>201901271312567_UpdateBlogAndBlogCategoryTables2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901281323382_AddSocialNetworksTables.cs" />
+    <Compile Include="Migrations\201901281323382_AddSocialNetworksTables.Designer.cs">
+      <DependentUpon>201901281323382_AddSocialNetworksTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281502256_DeleteClientTableFromSocialTable.cs" />
+    <Compile Include="Migrations\201901281502256_DeleteClientTableFromSocialTable.Designer.cs">
+      <DependentUpon>201901281502256_DeleteClientTableFromSocialTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281509196_DeleteClientTableFromSocialTable2.cs" />
+    <Compile Include="Migrations\201901281509196_DeleteClientTableFromSocialTable2.Designer.cs">
+      <DependentUpon>201901281509196_DeleteClientTableFromSocialTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281521256_DeleteClientTableFromSocialTable3.cs" />
+    <Compile Include="Migrations\201901281521256_DeleteClientTableFromSocialTable3.Designer.cs">
+      <DependentUpon>201901281521256_DeleteClientTableFromSocialTable3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogCategory.cs" />
@@ -257,12 +275,16 @@
     <Compile Include="Models\NavbarDropDownItem.cs" />
     <Compile Include="Models\NavbarItem.cs" />
     <Compile Include="Models\Personal.cs" />
+    <Compile Include="Models\PersonWithSocialNetwork.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\SocialNetwork.cs" />
+    <Compile Include="Models\SocialNetworkCategory.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\ViewModels\AboutUsViewModel.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutViewModel.cs" />
     <Compile Include="Models\ViewModels\ModelsPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\People.cs" />
     <Compile Include="Models\ViewModels\SearchResultViewModel.cs" />
     <Compile Include="Models\ViewModels\SingleBlogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -518,6 +540,16 @@
     <Content Include="Areas\Admin\Views\NavbarDropDownItem\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NavbarDropDownItem\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NavbarDropDownItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetworkCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetworkCategory\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetworkCategory\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetworkCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetworkCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetwork\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetwork\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetwork\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetwork\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialNetwork\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -639,6 +671,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901271312567_UpdateBlogAndBlogCategoryTables2.resx">
       <DependentUpon>201901271312567_UpdateBlogAndBlogCategoryTables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281323382_AddSocialNetworksTables.resx">
+      <DependentUpon>201901281323382_AddSocialNetworksTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281502256_DeleteClientTableFromSocialTable.resx">
+      <DependentUpon>201901281502256_DeleteClientTableFromSocialTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281509196_DeleteClientTableFromSocialTable2.resx">
+      <DependentUpon>201901281509196_DeleteClientTableFromSocialTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281521256_DeleteClientTableFromSocialTable3.resx">
+      <DependentUpon>201901281521256_DeleteClientTableFromSocialTable3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

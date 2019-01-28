@@ -8,7 +8,7 @@ using System.Web.DynamicData;
 namespace ASP.NET_FinalProject.Models
 {
     [TableName("Personal")]
-    public class Personal
+    public class Personal : PersonWithSocialNetwork
     {
         public int Id { get; set; }
 
@@ -21,7 +21,9 @@ namespace ASP.NET_FinalProject.Models
         public string Title { get; set; }
 
         [Required]
-        [Display(Name ="Profile photo")]
+        [Display(Name = "Profile photo")]
         public string PhotoUrl { get; set; }
+
+        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
     }
 }

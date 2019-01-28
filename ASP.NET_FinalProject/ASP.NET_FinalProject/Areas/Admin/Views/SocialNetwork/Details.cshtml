@@ -1,0 +1,43 @@
+﻿@model ASP.NET_FinalProject.Models.SocialNetwork
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SocialNetwork</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialNetworkCategory.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialNetworkCategory.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferenceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferenceId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

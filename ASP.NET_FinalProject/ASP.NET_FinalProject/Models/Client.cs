@@ -17,10 +17,10 @@ namespace ASP.NET_FinalProject.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        [Display(Name ="Success story")]
+        [Display(Name = "Success story")]
         public string SuccessStory { get; set; }
 
-        [Range(0,10)]
+        [Range(0, 10)]
         public int Rating { get; set; }
 
         [Required]
